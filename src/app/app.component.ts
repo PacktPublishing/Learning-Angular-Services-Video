@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoggingService} from './shared/logging.service.ts';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'weather-app';
+  title = 'Weather App';
+  author = 'Sam Orgill';
+  company = 'Packt Publishing';
+
+  constructor(private loggingService: LoggingService){}
+
+  onClick(message: string) {
+    this.loggingService.log(message);
+  }
 }
