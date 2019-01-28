@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LoggingService} from './shared/logging.service.ts';
+import {LoggingService} from './shared/logging.service';
 
 @Component({
   selector: 'app-root',
@@ -16,4 +16,5 @@ export class AppComponent {
   onClick(message: string) {
     this.loggingService.log(message);
   }
+
 }
