@@ -2,7 +2,9 @@
   <h1>
     Welcome to {{ title }}!
   </h1>
-  <h2>by {{author}} & {{company}}</h2>
 
-  <button type="button" (click)="onClick('Button clicked')">Click</button>
+  <div *ngFor="let log of logs">
+    <p>{{log.message}} at {{log.date | date}}</p>
+  </div>
+
 </div>
