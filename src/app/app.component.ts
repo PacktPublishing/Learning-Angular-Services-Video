@@ -13,7 +13,8 @@ export class AppComponent implements OnInit {
 
   logs = [];
 
-  constructor(private loggingService: LoggingService){}
+  constructor(private loggingService: LoggingService,
+  ){}
 
   ngOnInit() {
     this.getLogs();

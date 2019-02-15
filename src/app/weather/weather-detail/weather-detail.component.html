@@ -1,0 +1,7 @@
+<div class="container" *ngIf="selectedCity">
+  <h1>Weather Detail</h1>
+  <h2>{{selectedCity.city}}</h2>
+  <p>{{selectedCity.temp}}</p>
+  <p>{{selectedCity.forecast}}</p>
+  <button (click)="setHome()">Set home</button>
+</div>

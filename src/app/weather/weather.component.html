@@ -1,0 +1,8 @@
+<div class="weather" *ngFor="let city of weather">
+  <h2>{{city.city}}</h2>
+  <p>{{city.temp}}c</p>
+  <button (click)="selectedCity = city">More info</button>
+  <hr>
+</div>
+
+<app-weather-detail [selectedCity]="selectedCity" (homeCity)="setHomeCity($event)"></app-weather-detail>
