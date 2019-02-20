@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {WeatherService} from '../shared/weather.service';
 import {Weather} from '../shared/weather.model';
 
@@ -12,14 +12,27 @@ export class WeatherComponent implements OnInit {
   weather: Weather[];
   selectedCity: Weather;
 
-  constructor(private weatherService: WeatherService) { }
+  constructor(private weatherService: WeatherService) {
+  }
 
   ngOnInit() {
     this.getWeather();
+    // this.getWeatherPromise();
+    // this.weatherService.getHomeCity().subscribe((res) => console.log(res));
   }
 
   getWeather() {
-    this.weather = this.weatherService.getWeather();
+    this.weatherService.getWeather().subscribe(
+      (data) => this.weather = data
+    );
+  }
+
+  getWeatherPromise() {
+    this.weatherService.getWeatherPromise().then((data) => {
+      this.weather = data;
+    }).catch((error) => {
+      console.log(error);
+    });
   }
 
   setHomeCity(event: Weather) {
