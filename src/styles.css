@@ -1,5 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+:root {
+  --purple: #46237A;
+  --turquoise: #3DDC97;
+  --blue: #2AB7CA;
+  --red: #FE4A49;
+  --white: #FCFCFC;
+}
+
 body, html {
   font-family: "Avenir Next", sans-serif;
+  color: var(--purple);
+  background: linear-gradient(167deg, var(--turquoise), var(--blue), var(--purple) 80%);
+}
+
+.card, .mat-card {
+  color: var(--red);
+  margin: 1em 0;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
 }
