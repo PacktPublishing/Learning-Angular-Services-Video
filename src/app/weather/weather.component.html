@@ -1,17 +1,8 @@
-<div class="container" *ngIf="weather">
-  <h2>Local Weather</h2>
-  <div class="weather" *ngFor="let city of weather.list">
-    <div *ngFor="let x of city.weather">
-      <mat-card class="card">
-        <mat-card-header class="header">
-        <mat-card-title>{{city.name}}</mat-card-title>
-        <mat-card-subtitle>{{x.main}} - {{x.description}}</mat-card-subtitle>
-      </mat-card-header>
-      <img mat-card-avatar [src]="'http://openweathermap.org/img/w/' + x.icon + '.png'" alt="">
-      <mat-card-content>{{city.main.temp}} celsius</mat-card-content>
-      </mat-card>
-    </div>
-  </div>
+<div class="weather" *ngFor="let city of weather">
+  <h2>{{city.city}}</h2>
+  <p>{{city.temp}}c</p>
+  <button (click)="selectedCity = city">More info</button>
+  <hr>
 </div>
 
 <app-weather-detail [selectedCity]="selectedCity" (homeCity)="setHomeCity($event)"></app-weather-detail>

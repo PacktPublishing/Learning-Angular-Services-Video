@@ -9,28 +9,22 @@ import {Weather} from '../shared/weather.model';
 })
 export class WeatherComponent implements OnInit {
 
-  weather: any;
-  selectedCity: any;
+  weather: Weather[];
+  selectedCity: Weather;
 
   constructor(private weatherService: WeatherService) {
   }
 
   ngOnInit() {
-    this.getCoords();
-
+    this.getWeather();
+    // this.getWeatherPromise();
+    // this.weatherService.getHomeCity().subscribe((res) => console.log(res));
   }
 
-  getWeather(position: any) {
-    this.weatherService.getWeather(position.coords.latitude, position.coords.longitude)
-    .subscribe(
+  getWeather() {
+    this.weatherService.getWeather().subscribe(
       (data) => this.weather = data
     );
-  }
-
-  getCoords() {
-    navigator.geolocation.getCurrentPosition((position) => {
-      this.getWeather(position);
-    })
   }
 
   getWeatherPromise() {
