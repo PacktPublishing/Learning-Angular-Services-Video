@@ -1,5 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+/*deeppurple-amber.css*/
+/*indigo-pink.css*/
+/*pink-bluegrey.css*/
+/*purple-green.css*/
+
+:root {
+  --purple: #46237A;
+  --turquoise: #3DDC97;
+  --blue: #2AB7CA;
+  --red: #FE4A49;
+  --white: #FCFCFC;
+}
 
 body, html {
   font-family: "Avenir Next", sans-serif;
+  background-color: whitesmoke;
+  background: url('./assets/above-atmosphere-clouds-37728.jpg');
+  background-size: cover;
+}
+
+h1 {
+  color: var(--purple);
+}
+
+h2, mat-card-header {
+  color: var(--red);
+}
+
+mat-card-header {
+  display: flex;
+  justify-content: center;
 }

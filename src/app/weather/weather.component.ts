@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {WeatherService} from '../shared/weather.service';
 import {Weather} from '../shared/weather.model';
+import {WeatherOwm} from '../shared/weather-owm.model';
+
 
 @Component({
   selector: 'app-weather',
@@ -9,7 +11,7 @@ import {Weather} from '../shared/weather.model';
 })
 export class WeatherComponent implements OnInit {
 
-  weather: Weather[];
+  weather: WeatherOwm[];
   selectedCity: Weather;
 
   constructor(private weatherService: WeatherService) {
@@ -17,22 +19,12 @@ export class WeatherComponent implements OnInit {
 
   ngOnInit() {
     this.getWeather();
-    // this.getWeatherPromise();
-    // this.weatherService.getHomeCity().subscribe((res) => console.log(res));
   }
 
   getWeather() {
     this.weatherService.getWeather().subscribe(
-      (data) => this.weather = data
+      (data: any) => this.weather = data.list
     );
-  }
-
-  getWeatherPromise() {
-    this.weatherService.getWeatherPromise().then((data) => {
-      this.weather = data;
-    }).catch((error) => {
-      console.log(error);
-    });
   }
 
   setHomeCity(event: Weather) {

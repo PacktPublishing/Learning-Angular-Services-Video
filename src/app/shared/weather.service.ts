@@ -3,23 +3,32 @@ import {WEATHER} from './mock-weather';
 import {Weather} from './weather.model';
 import {of, Observable} from 'rxjs';
 import {catchError, map, tap} from 'rxjs/operators';
+import {HttpClient} from '@angular/common/http'
 
 @Injectable({
   providedIn: 'root'
 })
 export class WeatherService {
 
-  constructor() {
+  apiKey = '7bae24b92bf621d8e53f7c2f29907902';
+  baseUri
+    = 'http://api.openweathermap.org/data/2.5/find?&cnt=10&units=metric&appid='
+  lat = 51.5285582;
+  lon = -0.2416808;
+
+  constructor(private http: HttpClient) {
   }
 
   getWeather() {
-    return of(WEATHER);
+    let uri = this.baseUri + this.apiKey + '&lat=' + this.lat + '&lon=' + this.lon;
+    return this.http.get(uri);
   }
 
-  getWeatherPromise() {
-    const weatherProm = of(WEATHER).toPromise();
+  getWeatherByCity(city: string) {
+    let uri = 'http://api.openweathermap.org/data/2.5/weather?q='
+    + city + '&appid=' + this.apiKey;
 
-    return weatherProm;
+    return this.http.get(uri);
   }
 
   getHomeCity() {

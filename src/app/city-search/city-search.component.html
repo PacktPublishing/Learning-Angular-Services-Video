@@ -1,0 +1,30 @@
+<div class="container">
+
+  <form class="form" #seachForm="ngForm">
+    <mat-form-field class=form-group>
+      <input
+        matInput
+        type="text"
+        id="city"
+        name="city"
+        [(ngModel)]="cityName">
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="primary"
+      type="button"
+      (click)="getWeatherByCity(); seachForm.resetForm()"
+      >Search for a city</button>
+  </form>
+  
+  <div *ngIf="city">
+    <h2>{{city.name}}</h2>
+    <p>{{city.main.temp}}</p>
+    <div *ngFor="let forecast of city.weather">
+      <p>{{forecast.main}} - {{forecast.description}}</p>
+      <img
+      [src]="'http://openweathermap.org/img/w/' + forecast.icon + '.png'"
+      alt="">
+    </div>
+  </div>
+</div>

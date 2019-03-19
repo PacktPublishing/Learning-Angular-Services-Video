@@ -1,8 +1,14 @@
 <div class="weather" *ngFor="let city of weather">
-  <h2>{{city.city}}</h2>
-  <p>{{city.temp}}c</p>
-  <button (click)="selectedCity = city">More info</button>
-  <hr>
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title>{{city.name}}</mat-card-title>
+      <mat-card-subtitle>{{city.main.temp}}c</mat-card-subtitle>
+  </mat-card-header>
+  <div *ngFor="let forecast of city.weather">
+    <mat-card-content>{{forecast.main}} - {{forecast.description}}</mat-card-content>
+    <img mat-card-avatar
+    [src]="'http://openweathermap.org/img/w/' + forecast.icon + '.png'"
+    alt="">
+  </div>
+  </mat-card>
 </div>
-
-<app-weather-detail [selectedCity]="selectedCity" (homeCity)="setHomeCity($event)"></app-weather-detail>

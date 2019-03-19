@@ -1,0 +1,17 @@
+.weather {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card {
+  align-self: center;
+  margin-top: 2em;
+  width: 50%;
+}
+
+@media screen and (max-width: 500px) {
+  .card {
+    width: 90%;
+  }
+}
