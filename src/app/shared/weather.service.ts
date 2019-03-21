@@ -31,14 +31,25 @@ export class WeatherService {
     return this.http.get(uri);
   }
 
-  getHomeCity() {
-    return of(WEATHER).pipe(
-      tap(res => res.forEach((x) => {
-        console.log(`Tap: ${x.id}, city ${x.city}`);
-      })),
-      catchError(this.handleError(`getHomeCity() failed, city=${WEATHER[0].city}`))
-    );
+  addWeather(weather: Weather): Observable<string> {
+    weather.id = WEATHER.length + 1;
+
+    WEATHER.push(weather);
+
+    return of(weather.city + ' added');
   }
+
+  deleteWeather(weather: Weather): Observable<string> {
+  if (WEATHER.includes(weather)) {
+    WEATHER.forEach((city, i) => {
+      if (city === weather) {
+        WEATHER.splice(i, 1);
+      }
+    });
+  }
+  
+  return of(weather.city + ' deleted');
+}
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
