@@ -6,7 +6,6 @@ export const WEATHER = [
    temp: 10,
    forecast: 'Overcast with showers',
    home: true
-
  },
  {
    id: 2,

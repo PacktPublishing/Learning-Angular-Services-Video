@@ -1,4 +1,4 @@
-import {TestBed, async, inject} from '@angular/core/testing';
+import {TestBed, async, inject, __core_private_testing_placeholder__} from '@angular/core/testing';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {WeatherService} from './weather.service';
 import {of} from 'rxjs';
@@ -55,11 +55,18 @@ describe('WeatherService', () => {
   });
 
   it('#addWeather should be called', () => {
+
+    let mockWeather = new Weather();
+     mockWeather.id = 4;
+     mockWeather.city = 'Mumbai';
+     mockWeather.temp = 25;
+     mockWeather.forecast = 'Sunny';
+
     weatherService = TestBed.get(WeatherService);
 
     let spy = spyOn(weatherService, 'addWeather').and.callThrough();
 
-    weatherService.addWeather(mockResponse).subscribe();
+    weatherService.addWeather(mockWeather).subscribe();
 
     expect(spy).toHaveBeenCalled();
   });
